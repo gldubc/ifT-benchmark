@@ -534,19 +534,19 @@ For language details: [SETUP.md](./SETUP.md)
 
 | Benchmark         | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau   | MLsem | Typed Clojure | ty     | Pyrefly | Elixir |
 |:------------------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:------:|:-----:|:-------------:|:------:|:-------:|:------:|
-| positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | O      |
-| nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       | O      |
-| tuple_elements    | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| tuple_length      | x            | O          | O    | O    | O       | x      | x      | O     | O             | x      | O       | O      |
-| alias             | O            | O          | x    | x    | O       | O      | x      | O     | O             | x      | O       | O      |
-| nesting_condition | O            | x          | x    | x    | x       | O      | x      | O     | O             | x      | x       | O      |
-| merge_with_union  | O            | O          | O    | x    | O       | O      | x      | O     | O             | O      | O       | O      |
-| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       | O      |
-| predicate_1way    | O            | x          | O    | O    | O       | x      | x      | O     | O             | O      | O       | O      |
-| predicate_checked | O            | x          | O    | x    | x       | x      | x      | O     | O             | x      | x       | O      |
+| positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | x      |
+| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | x      |
+| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | x      |
+| nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | x      |
+| struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       | x      |
+| tuple_elements    | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | x      |
+| tuple_length      | x            | O          | O    | O    | O       | x      | x      | O     | O             | x      | O       | x      |
+| alias             | O            | O          | x    | x    | O       | O      | x      | O     | O             | x      | O       | x      |
+| nesting_condition | O            | x          | x    | x    | x       | O      | x      | O     | O             | x      | x       | x      |
+| merge_with_union  | O            | O          | O    | x    | O       | O      | x      | O     | O             | O      | O       | x      |
+| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       | x      |
+| predicate_1way    | O            | x          | O    | O    | O       | x      | x      | O     | O             | O      | O       | x      |
+| predicate_checked | O            | x          | O    | x    | x       | x      | x      | O     | O             | x      | x       | x      |
 
 `O` means passed, `x` means not passed.
 
@@ -557,10 +557,10 @@ The results of these examples are demonstrated below.
 
 | Benchmark | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau | MLsem | Typed Clojure | ty     | Pyrefly | Elixir |
 |:----------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:----:|:-----:|:-------------:|:------:|:-------:|:------:|
-| filter    | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | O      |
-| flatten   | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | O      |
-| tree_node | O            | x          | x    | x    | x       | x      | x    | O     | O             | x      | x       | O      |
-| rainfall  | O            | O          | O    | O    | O       | O      | x    | O     | O             | x      | O       | O      |
+| filter    | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | x      |
+| flatten   | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | x      |
+| tree_node | O            | x          | x    | x    | x       | x      | x    | O     | O             | x      | x       | x      |
+| rainfall  | O            | O          | O    | O    | O       | O      | x    | O     | O             | x      | O       | x      |
 
 ## Other Discussions
 

@@ -30,7 +30,7 @@ defmodule IfTBenchmarkElixir.FilterFailure do
       if predicate.(element) do
         [element | acc]
       else
-        1 + "oops"
+        [element | acc]
       end
     end)
   end
@@ -48,7 +48,7 @@ end
 defmodule IfTBenchmarkElixir.FlattenFailure do
   def run([]), do: []
   def run([head | tail]), do: run(head) ++ run(tail)
-  def run(_value), do: 1 + "oops"
+  def run(value), do: value
 end
 
 ## Example tree_node
@@ -59,13 +59,11 @@ end
 
 ## failure
 defmodule IfTBenchmarkElixir.TreeNodeFailure do
-  def run(node) do
-    if IfTBenchmarkElixir.ExampleHelpers.tree_node?(node) do
-      true
-    else
-      1 + "oops"
-    end
+  def tree_node?({value, children}) when is_integer(value) and is_list(children) do
+    true
   end
+
+  def tree_node?(_), do: false
 end
 
 ## Example rainfall
@@ -100,8 +98,8 @@ defmodule IfTBenchmarkElixir.RainfallFailure do
   def run(weather_reports) when is_list(weather_reports) do
     Enum.reduce(weather_reports, 0.0, fn day, total ->
       if is_map(day) and Map.has_key?(day, :rainfall) do
-        _value = Map.get(day, :rainfall)
-        total + "oops"
+        value = Map.get(day, :rainfall)
+        total + value
       else
         total
       end

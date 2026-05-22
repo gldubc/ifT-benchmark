@@ -24,7 +24,7 @@ end
 defmodule IfTBenchmarkElixir.PositiveFailure do
   def f(x) do
     if is_binary(x) do
-      String.length(x) + "oops"
+      x + 1
     else
       x
     end
@@ -49,7 +49,7 @@ defmodule IfTBenchmarkElixir.NegativeFailure do
     if is_binary(x) do
       String.length(x)
     else
-      1 + "oops"
+      x + 1
     end
   end
 end
@@ -74,11 +74,7 @@ end
 defmodule IfTBenchmarkElixir.ConnectivesFailure do
   def f(x) do
     if IfTBenchmarkElixir.Helpers.binary_or_integer?(x) and not is_boolean(x) do
-      if is_binary(x) do
-        String.length(x) + "oops"
-      else
-        x + 1
-      end
+      x + 1
     else
       0
     end
@@ -106,7 +102,7 @@ defmodule IfTBenchmarkElixir.NestingBodyFailure do
   def f(x) do
     if not is_binary(x) do
       if not is_boolean(x) do
-        1 + "oops"
+        String.length(x)
       else
         0
       end
@@ -131,8 +127,8 @@ end
 ## failure
 defmodule IfTBenchmarkElixir.StructFieldsFailure do
   def f(%{a: a}) do
-    if is_binary(a) do
-      String.length(a) + "oops"
+    if is_integer(a) do
+      String.length(a)
     else
       0
     end
@@ -155,7 +151,7 @@ end
 defmodule IfTBenchmarkElixir.TupleElementsFailure do
   def f({a, _b}) do
     if is_integer(a) do
-      1 + "oops"
+      String.length(a)
     else
       0
     end
@@ -185,10 +181,9 @@ defmodule IfTBenchmarkElixir.TupleLengthFailure do
              (tuple_size(x) == 3 and
                 is_binary(elem(x, 0)) and
                 is_binary(elem(x, 1)) and is_binary(elem(x, 2))) do
-    if tuple_size(x) == 2 do
-      elem(x, 0) + elem(x, 1)
-    else
-      String.length(elem(x, 0)) + "oops"
+    case x do
+      {a, b} -> a + b
+      {_, _, _} -> elem(x, 0) + elem(x, 1)
     end
   end
 end
@@ -213,7 +208,7 @@ defmodule IfTBenchmarkElixir.AliasFailure do
     y = is_binary(x)
 
     if y do
-      String.length(x) + "oops"
+      x + 1
     else
       x
     end
@@ -236,9 +231,9 @@ end
 defmodule IfTBenchmarkElixir.NestingConditionFailure do
   def f(x, y) do
     if if(is_integer(x), do: is_binary(y), else: is_binary(y)) do
-      String.length(y) + "oops"
+      x + String.length(y)
     else
-      x
+      0
     end
   end
 end
@@ -261,14 +256,14 @@ end
 ## failure
 defmodule IfTBenchmarkElixir.MergeWithUnionFailure do
   def f(x) do
-    _y =
+    y =
       cond do
         is_binary(x) -> x <> "hello"
         is_integer(x) -> x + 1
         true -> 0
       end
 
-    1 + "oops"
+    y + 1
   end
 end
 
@@ -292,7 +287,7 @@ defmodule IfTBenchmarkElixir.Predicate2WayFailure do
 
   def g(x) do
     if binary_value?(x) do
-      String.length(x) + "oops"
+      x + 1
     else
       x
     end
@@ -317,7 +312,7 @@ defmodule IfTBenchmarkElixir.Predicate1WayFailure do
     if IfTBenchmarkElixir.Helpers.positive_integer?(x) do
       x + 1
     else
-      1 + "oops"
+      String.length(x)
     end
   end
 end
@@ -342,7 +337,7 @@ defmodule IfTBenchmarkElixir.PredicateCheckedFailure do
     if checked_integer?(x) do
       x + 1
     else
-      1 + "oops"
+      0
     end
   end
 end

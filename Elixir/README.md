@@ -66,12 +66,12 @@ N/A.
 
 > Q. Are any benchmarks inexpressible? Why?
 
-The benchmark scenarios are expressible as code, but Elixir does not provide a static narrowing type system comparable to the other entries.
+The benchmark scenarios are expressible as code, but Elixir does not provide a static narrowing type system comparable to the other entries. The faithful negative cases compile, so the benchmark reports them as not passed.
 
 
 > Q. Are any benchmarks expressed particularly well, or particularly poorly? Explain.
 
-Container and guard-heavy cases are direct. Predicate-annotation-specific cases are only approximated.
+Container and guard-heavy cases are direct as Elixir programs. Predicate-annotation-specific cases are only approximated because Elixir has ordinary boolean predicates rather than typed predicate annotations.
 
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
@@ -83,7 +83,7 @@ Moderately direct, with adaptations to Elixir idioms.
 
 > Q. Are any examples inexpressible? Why?
 
-No.
+No, but the faithful negative examples compile.
 
 
 > Q. Are any examples expressed particularly well, or particularly poorly? Explain.
