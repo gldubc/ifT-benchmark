@@ -74,6 +74,8 @@ The benchmark scenarios are expressible as code. Some faithful negative cases em
 
 Container and guard-heavy cases are direct as Elixir programs. Predicate-annotation-specific cases are only approximated because Elixir has ordinary boolean predicates rather than typed predicate annotations.
 
+The `connectives` disjunction failure uses `String.length(x) + x` instead of `x + 1`. Guard refinements in Elixir produce dynamic unions, so `x + 1` is compatible with `dynamic(binary() or integer())` through the integer alternative; the replacement keeps the string/number vocabulary while requiring the disjunctively refined value to be used inconsistently.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 

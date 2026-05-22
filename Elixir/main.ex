@@ -57,27 +57,37 @@ end
 ## Example connectives
 ## success
 defmodule IfTBenchmarkElixir.ConnectivesSuccess do
-  def f(x) do
-    if IfTBenchmarkElixir.Helpers.binary_or_integer?(x) and not is_boolean(x) do
-      if is_binary(x) do
-        String.length(x)
-      else
-        x + 1
-      end
-    else
-      0
+  def f(x) when is_binary(x) or is_integer(x) do
+    if not is_integer(x), do: String.length(x), else: 0
+  end
+
+  def g(x) do
+    case x do
+      x when is_binary(x) or is_integer(x) -> f(x)
+      _ -> 0
     end
+  end
+
+  def h(x) when is_binary(x) or is_integer(x) or is_boolean(x) do
+    if not is_boolean(x) and not is_integer(x), do: String.length(x), else: 0
   end
 end
 
 ## failure
 defmodule IfTBenchmarkElixir.ConnectivesFailure do
-  def f(x) do
-    if IfTBenchmarkElixir.Helpers.binary_or_integer?(x) and not is_boolean(x) do
-      x + 1
-    else
-      0
+  def f(x) when is_binary(x) or is_integer(x) do
+    if not is_integer(x), do: x + 1, else: 0
+  end
+
+  def g(x) do
+    case x do
+      x when is_binary(x) or is_integer(x) -> String.length(x) + x
+      _ -> 0
     end
+  end
+
+  def h(x) when is_binary(x) or is_integer(x) or is_boolean(x) do
+    if not is_boolean(x) and not is_integer(x), do: x + 1, else: 0
   end
 end
 

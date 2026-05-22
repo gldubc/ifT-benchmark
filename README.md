@@ -536,7 +536,7 @@ For language details: [SETUP.md](./SETUP.md)
 |:------------------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:------:|:-----:|:-------------:|:------:|:-------:|:------:|
 | positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
 | negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | x      |
+| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | O      |
 | nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
 | struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       | O      |
 | tuple_elements    | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
