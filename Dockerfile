@@ -1,13 +1,22 @@
-FROM elixir:1.19.5-otp-28
+FROM erlang:28
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
         curl \
+        git \
         build-essential \
         libsqlite3-dev \
         libfontconfig libcairo2 libjpeg-dev libglib2.0-0 libpango-1.0-0 libpng16-16 libpangocairo-1.0-0
 
 ENV HOME=/root
+
+ARG ELIXIR_COMMIT=b08f6fa3e218a3281348ef81785e0d39406beacf
+RUN git clone https://github.com/elixir-lang/elixir.git /opt/elixir && \
+    cd /opt/elixir && \
+    git checkout $ELIXIR_COMMIT && \
+    make
+
+ENV PATH=/opt/elixir/bin:$PATH
 
 WORKDIR /root
 

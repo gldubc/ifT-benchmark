@@ -10,6 +10,7 @@ Elixir is a dynamic language that compiles to BEAM.
 * Implementation: [./main.ex](./main.ex)
 * Raw command to run the benchmark: `mix compile --warnings-as-errors --force` (through [./checker.exs](./checker.exs))
 * Driver commands from the repository root: `racket main.rkt elixir` and `racket main.rkt --examples elixir`
+* Reported compiler: `/Users/gldubc/Code/research/elixir/main/bin/elixir`, commit `b08f6fa3e218a3281348ef81785e0d39406beacf` (`Elixir 1.21.0-dev`)
 
 #### Type System Basics
 
@@ -66,7 +67,7 @@ N/A.
 
 > Q. Are any benchmarks inexpressible? Why?
 
-The benchmark scenarios are expressible as code, but Elixir does not provide a static narrowing type system comparable to the other entries. The faithful negative cases compile, so the benchmark reports them as not passed.
+The benchmark scenarios are expressible as code. Some faithful negative cases emit type warnings with the research Elixir compiler, and the benchmark treats those warnings as failures via `--warnings-as-errors`.
 
 
 > Q. Are any benchmarks expressed particularly well, or particularly poorly? Explain.
@@ -83,7 +84,7 @@ Moderately direct, with adaptations to Elixir idioms.
 
 > Q. Are any examples inexpressible? Why?
 
-No, but the faithful negative examples compile.
+No, but the faithful negative examples currently compile without type warnings.
 
 
 > Q. Are any examples expressed particularly well, or particularly poorly? Explain.
