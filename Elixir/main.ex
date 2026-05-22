@@ -201,20 +201,20 @@ end
 ## Example alias
 ## success
 defmodule IfTBenchmarkElixir.AliasSuccess do
-  def f(x) do
+  def f(x) when is_binary(x) or is_integer(x) do
     y = is_binary(x)
 
     if y do
       String.length(x)
     else
-      x
+      x + 1
     end
   end
 end
 
 ## failure
 defmodule IfTBenchmarkElixir.AliasFailure do
-  def f(x) do
+  def f(x) when is_binary(x) or is_integer(x) do
     y = is_binary(x)
 
     if y do

@@ -76,6 +76,8 @@ Container and guard-heavy cases are direct as Elixir programs. Predicate-annotat
 
 The `connectives` disjunction failure uses `String.length(x) + x` instead of `x + 1`. Guard refinements in Elixir produce dynamic unions, so `x + 1` is compatible with `dynamic(binary() or integer())` through the integer alternative; the replacement keeps the string/number vocabulary while requiring the disjunctively refined value to be used inconsistently.
 
+The `alias` benchmark bounds the input with a guard before assigning `y = is_binary(x)`. A direct `if is_binary(x)` refines `x` enough to reject `x + 1`, but using the saved boolean `y` does not refine `x`, so the failure case still compiles.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 
