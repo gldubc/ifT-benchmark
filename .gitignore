@@ -36,3 +36,9 @@ node_modules/
 
 # Racket
 compiled/
+
+# Elixir / Mix
+_build/
+deps/
+.elixir_ls/
+Elixir/lib/benchmark_case.ex

@@ -28,6 +28,7 @@ For some instances, see
 - [Flow documentation on type refinements](https://flow.org/en/docs/lang/refinements/#toc-refinement-invalidations)
 - [Mypy documentation on type narrowing](https://mypy.readthedocs.io/en/stable/type_narrowing.html#typeguards-with-parameters)
 - [Pyright documentation on type narrowing](https://github.com/microsoft/pyright/blob/main/docs/type-concepts-advanced.md#type-narrowing)
+- [Elixir documentation on guards and pattern matching](https://hexdocs.pm/elixir/patterns-and-guards.html)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
@@ -531,21 +532,21 @@ Below is a table for all benchmark items as a quick reference.
 
 For language details: [SETUP.md](./SETUP.md)
 
-| Benchmark         | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau   | MLsem | Typed Clojure | ty     | Pyrefly |
-|:------------------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:------:|:-----:|:-------------:|:------:|:-------:|
-| positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       |
-| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       |
-| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       |
-| nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       |
-| struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       |
-| tuple_elements    | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       |
-| tuple_length      | x            | O          | O    | O    | O       | x      | x      | O     | O             | x      | O       |
-| alias             | O            | O          | x    | x    | O       | O      | x      | O     | O             | x      | O       |
-| nesting_condition | O            | x          | x    | x    | x       | O      | x      | O     | O             | x      | x       |
-| merge_with_union  | O            | O          | O    | x    | O       | O      | x      | O     | O             | O      | O       |
-| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       |
-| predicate_1way    | O            | x          | O    | O    | O       | x      | x      | O     | O             | O      | O       |
-| predicate_checked | O            | x          | O    | x    | x       | x      | x      | O     | O             | x      | x       |
+| Benchmark         | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau   | MLsem | Typed Clojure | ty     | Pyrefly | Elixir |
+|:------------------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:------:|:-----:|:-------------:|:------:|:-------:|:------:|
+| positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
+| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
+| connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | O      |
+| nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
+| struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       | O      |
+| tuple_elements    | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
+| tuple_length      | x            | O          | O    | O    | O       | x      | x      | O     | O             | x      | O       | O      |
+| alias             | O            | O          | x    | x    | O       | O      | x      | O     | O             | x      | O       | O      |
+| nesting_condition | O            | x          | x    | x    | x       | O      | x      | O     | O             | x      | x       | O      |
+| merge_with_union  | O            | O          | O    | x    | O       | O      | x      | O     | O             | O      | O       | O      |
+| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       | O      |
+| predicate_1way    | O            | x          | O    | O    | O       | x      | x      | O     | O             | O      | O       | O      |
+| predicate_checked | O            | x          | O    | x    | x       | x      | x      | O     | O             | x      | x       | O      |
 
 `O` means passed, `x` means not passed.
 
@@ -554,14 +555,12 @@ For language details: [SETUP.md](./SETUP.md)
 [EXAMPLES.md](./EXAMPLES.md) contains more examples that are not included in the benchmark items. Those are real-world-like examples showing the use of type narrowing in various contexts. For more details about the examples, see [EXAMPLES.md](./EXAMPLES.md). For more details about the results, see the README.md file in the respective typechecker directories.
 The results of these examples are demonstrated below.
 
-| Benchmark | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau | MLsem | Typed Clojure | ty     | Pyrefly |
-|:----------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:----:|:-----:|:-------------:|:------:|:-------:|
-| filter    | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       |
-| flatten   | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       |
-| tree_node | O            | x          | x    | x    | x       | x      | x    | O     | O             | x      | x       |
-| rainfall  | O            | O          | O    | O    | O       | O      | x    | O     | O             | x      | O       |
-
-
+| Benchmark | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau | MLsem | Typed Clojure | ty     | Pyrefly | Elixir |
+|:----------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:----:|:-----:|:-------------:|:------:|:-------:|:------:|
+| filter    | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | O      |
+| flatten   | O            | O          | O    | O    | O       | O      | O    | O     | O             | O      | O       | O      |
+| tree_node | O            | x          | x    | x    | x       | x      | x    | O     | O             | x      | x       | O      |
+| rainfall  | O            | O          | O    | O    | O       | O      | x    | O     | O             | x      | O       | O      |
 
 ## Other Discussions
 

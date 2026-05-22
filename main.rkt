@@ -79,7 +79,19 @@
             (examples-file-base-path ,(build-path (current-directory) "Sorbet"))
             (arguments ,(list "main.rb" "exec" "srb" "tc"))
             (examples-arguments ,(list "examples.rb" "exec" "srb" "tc"))
-            (command "bundle"))))
+            (command "bundle"))
+    (elixir (name "Elixir")
+            (comment-char #\#)
+            (extension ".ex")
+            (file-base-path ,(build-path (current-directory) "Elixir"))
+            (examples-file-base-path ,(build-path (current-directory) "Elixir"))
+            (arguments ,`(,"main.ex"
+                          ,(lambda (input-file)
+                             (list "checker.exs" (path->string input-file)))))
+            (examples-arguments ,`(,"examples.ex"
+                                   ,(lambda (input-file)
+                                      (list "checker.exs" (path->string input-file)))))
+            (command "elixir"))))
 
 (define (get-benchmark-result-row type-checker-symbol)
   (when (benchmark-verbose)

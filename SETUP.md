@@ -7,6 +7,7 @@ To run the benchmark, you need to have the following tools installed:
 - [Python and pip](https://www.python.org/)
 - [Ruby and gem](https://www.ruby-lang.org/)
 - [MLsem](https://github.com/E-Sh4rk/MLsem)
+- [Erlang/OTP and Elixir](https://elixir-lang.org/install.html)
 
 The tested versions are:
 
@@ -28,6 +29,8 @@ The tested versions are:
 | Luau         | 0.717     | https://github.com/luau-lang/luau/releases/tag/0.717                                                                  |
 | MLsem        | v1.0.1-51-g868afd7 | Must be installed separately as `mlsem` on `PATH`                                                            |
 | Clojure      | 1.12.4    | https://clojure.org/guides/install_clojure                                                                            |
+| Erlang/OTP   | 28        | See `elixir -v`; the Dockerfile pins `elixir:1.19.5-otp-28`                                                          |
+| Elixir       | 1.19.5    | See `elixir -v`; the Dockerfile pins `elixir:1.19.5-otp-28`                                                          |
 
 First, clone this repository:
 

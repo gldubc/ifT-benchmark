@@ -31,6 +31,14 @@ if ! command_exists luau; then
     echo "Error: luau is not installed. Please install Luau first."
     exit 1
 fi
+if ! command_exists elixir; then
+    echo "Error: elixir is not installed. Please install Elixir first."
+    exit 1
+fi
+if ! command_exists mix; then
+    echo "Error: mix is not installed. Please install Elixir first."
+    exit 1
+fi
 
 # Install TypeScript
 echo "Setting up TypeScript..."
@@ -81,6 +89,11 @@ else
     fi
 
 fi
+cd ..
+
+echo "Setting up Elixir..."
+cd Elixir
+mix deps.get
 cd ..
 
 echo "Setting up Sorbet..."

@@ -1,4 +1,4 @@
-FROM ubuntu:noble-20250404
+FROM elixir:1.19.5-otp-28
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
