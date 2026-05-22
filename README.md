@@ -535,7 +535,7 @@ For language details: [SETUP.md](./SETUP.md)
 | Benchmark         | Typed Racket | TypeScript | Flow | mypy | Pyright | Sorbet | Luau   | MLsem | Typed Clojure | ty     | Pyrefly | Elixir |
 |:------------------|:------------:|:----------:|:----:|:----:|:-------:|:------:|:------:|:-----:|:-------------:|:------:|:-------:|:------:|
 | positive          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
-| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | x      |
+| negative          | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
 | connectives       | O            | O          | O    | O    | O       | O      | O      | x     | O             | O      | O       | x      |
 | nesting_body      | O            | O          | O    | O    | O       | O      | O      | O     | O             | O      | O       | O      |
 | struct_fields     | O            | O          | O    | O    | O       | x      | O      | O     | O             | O      | O       | O      |

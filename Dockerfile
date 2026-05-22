@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV HOME=/root
 
-ARG ELIXIR_COMMIT=b08f6fa3e218a3281348ef81785e0d39406beacf
+ARG ELIXIR_COMMIT=e17cb856a0af0ea327c8bf57c1de83219f4e559e
 RUN git clone https://github.com/elixir-lang/elixir.git /opt/elixir && \
     cd /opt/elixir && \
     git checkout $ELIXIR_COMMIT && \

@@ -8,9 +8,9 @@ Elixir is a dynamic language that compiles to BEAM.
   - <https://hexdocs.pm/elixir/Kernel.SpecialForms.html>
 * If-T version: **1.0**
 * Implementation: [./main.ex](./main.ex)
-* Raw command to run the benchmark: `mix compile --warnings-as-errors --force` (through [./checker.exs](./checker.exs))
+* Raw command to run the benchmark: `mix compile --warnings-as-errors --force` (through [./checker.exs](./checker.exs), which makes Mix load from the selected Elixir checkout)
 * Driver commands from the repository root: `racket main.rkt elixir` and `racket main.rkt --examples elixir`
-* Reported compiler: `/Users/gldubc/Code/research/elixir/main/bin/elixir`, commit `b08f6fa3e218a3281348ef81785e0d39406beacf` (`Elixir 1.21.0-dev`)
+* Reported compiler: `/Users/gldubc/Code/research/elixir/main/bin/elixir`, commit `e17cb856a0af0ea327c8bf57c1de83219f4e559e` (`Elixir 1.21.0-dev`)
 
 #### Type System Basics
 

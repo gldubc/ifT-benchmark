@@ -34,7 +34,7 @@ end
 ## Example negative
 ## success
 defmodule IfTBenchmarkElixir.NegativeSuccess do
-  def f(x) do
+  def f(x) when is_binary(x) or is_integer(x) do
     if is_binary(x) do
       String.length(x)
     else
@@ -45,7 +45,7 @@ end
 
 ## failure
 defmodule IfTBenchmarkElixir.NegativeFailure do
-  def f(x) do
+  def f(x) when is_binary(x) or is_boolean(x) do
     if is_binary(x) do
       String.length(x)
     else

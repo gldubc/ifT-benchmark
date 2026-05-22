@@ -7,7 +7,7 @@ To run the benchmark, you need to have the following tools installed:
 - [Python and pip](https://www.python.org/)
 - [Ruby and gem](https://www.ruby-lang.org/)
 - [MLsem](https://github.com/E-Sh4rk/MLsem)
-- [Erlang/OTP and Elixir](https://elixir-lang.org/install.html). The reported Elixir results use the Elixir checkout at `/Users/gldubc/Code/research/elixir/main`, commit `b08f6fa3e218a3281348ef81785e0d39406beacf`.
+- [Erlang/OTP and Elixir](https://elixir-lang.org/install.html). The reported Elixir results use the Elixir checkout at `/Users/gldubc/Code/research/elixir/main`, commit `e17cb856a0af0ea327c8bf57c1de83219f4e559e`.
 
 The tested versions are:
 
@@ -30,7 +30,7 @@ The tested versions are:
 | MLsem        | v1.0.1-51-g868afd7 | Must be installed separately as `mlsem` on `PATH`                                                            |
 | Clojure      | 1.12.4    | https://clojure.org/guides/install_clojure                                                                            |
 | Erlang/OTP   | 28        | See `elixir -v`; the Dockerfile uses `erlang:28`                                                                      |
-| Elixir       | 1.21.0-dev (`b08f6fa3e218a3281348ef81785e0d39406beacf`) | Put that checkout's `bin` directory first on `PATH`; the Dockerfile builds this commit from source |
+| Elixir       | 1.21.0-dev (`e17cb856a0af0ea327c8bf57c1de83219f4e559e`) | Put that checkout's `bin` directory first on `PATH`; the checker makes Mix load from the same checkout, and the Dockerfile builds this commit from source |
 
 First, clone this repository:
 
