@@ -10,6 +10,6 @@
 | alias             | O            | O          | x    | x    | O       | O      | x      | O     | O             | x      | O       | x      |
 | nesting_condition | O            | x          | x    | x    | x       | O      | x      | O     | O             | x      | x       | O      |
 | merge_with_union  | O            | O          | O    | x    | O       | O      | x      | O     | O             | O      | O       | O      |
-| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       | x      |
+| predicate_2way    | O            | O          | O    | O    | O       | x      | x      | O     | O             | O      | O       | O      |
 | predicate_1way    | O            | x          | O    | O    | O       | x      | x      | O     | O             | O      | O       | x      |
 | predicate_checked | O            | x          | O    | x    | x       | x      | x      | O     | O             | x      | x       | O      |

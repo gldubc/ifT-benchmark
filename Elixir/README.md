@@ -82,6 +82,8 @@ The `nesting_condition` benchmark also bounds its inputs first. Elixir propagate
 
 The `merge_with_union` failure uses `String.length(y) + y` after the merge. This keeps the merged binary/integer value visible while avoiding the misleading `y + 1`, which is compatible with the integer alternative of `dynamic(binary() or integer())`.
 
+The `predicate_2way` benchmark uses `defguard` and a `case` guard. Calling an ordinary helper function in `if` does not refine the argument, but a custom guard in guard position is expanded to the underlying type test and refines both the matching and fall-through cases.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 

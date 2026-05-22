@@ -282,26 +282,24 @@ end
 ## Example predicate_2way
 ## success
 defmodule IfTBenchmarkElixir.Predicate2WaySuccess do
-  def binary_value?(x), do: is_binary(x)
+  defguard binary_value?(x) when is_binary(x)
 
-  def g(x) do
-    if binary_value?(x) do
-      String.length(x)
-    else
-      x
+  def g(x) when is_binary(x) or is_integer(x) do
+    case x do
+      x when binary_value?(x) -> String.length(x)
+      x -> x + 1
     end
   end
 end
 
 ## failure
 defmodule IfTBenchmarkElixir.Predicate2WayFailure do
-  def binary_value?(x), do: is_binary(x)
+  defguard binary_value?(x) when is_binary(x)
 
-  def g(x) do
-    if binary_value?(x) do
-      x + 1
-    else
-      x
+  def g(x) when is_binary(x) or is_integer(x) do
+    case x do
+      x when binary_value?(x) -> x + 1
+      x -> x
     end
   end
 end
