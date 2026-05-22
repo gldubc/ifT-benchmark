@@ -80,6 +80,8 @@ The `alias` benchmark bounds the input with a guard before assigning `y = is_bin
 
 The `nesting_condition` benchmark also bounds its inputs first. Elixir propagates the facts from the inner conditional to the outer body; the failure witness uses `String.length(x) + x` to make the unclear type of `x` observable under Elixir's dynamic-union compatibility.
 
+The `merge_with_union` failure uses `String.length(y) + y` after the merge. This keeps the merged binary/integer value visible while avoiding the misleading `y + 1`, which is compatible with the integer alternative of `dynamic(binary() or integer())`.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 

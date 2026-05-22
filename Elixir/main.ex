@@ -275,7 +275,7 @@ defmodule IfTBenchmarkElixir.MergeWithUnionFailure do
         true -> 0
       end
 
-    y + 1
+    String.length(y) + y
   end
 end
 
