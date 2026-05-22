@@ -228,7 +228,8 @@ end
 ## Example nesting_condition
 ## success
 defmodule IfTBenchmarkElixir.NestingConditionSuccess do
-  def f(x, y) do
+  def f(x, y)
+      when (is_integer(x) or is_binary(x)) and (is_binary(y) or is_integer(y)) do
     if if(is_integer(x), do: is_binary(y), else: false) do
       x + String.length(y)
     else
@@ -239,9 +240,10 @@ end
 
 ## failure
 defmodule IfTBenchmarkElixir.NestingConditionFailure do
-  def f(x, y) do
+  def f(x, y)
+      when (is_integer(x) or is_binary(x)) and (is_binary(y) or is_integer(y)) do
     if if(is_integer(x), do: is_binary(y), else: is_binary(y)) do
-      x + String.length(y)
+      String.length(x) + x
     else
       0
     end

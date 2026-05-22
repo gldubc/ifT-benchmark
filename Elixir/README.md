@@ -78,6 +78,8 @@ The `connectives` disjunction failure uses `String.length(x) + x` instead of `x 
 
 The `alias` benchmark bounds the input with a guard before assigning `y = is_binary(x)`. A direct `if is_binary(x)` refines `x` enough to reject `x + 1`, but using the saved boolean `y` does not refine `x`, so the failure case still compiles.
 
+The `nesting_condition` benchmark also bounds its inputs first. Elixir propagates the facts from the inner conditional to the outer body; the failure witness uses `String.length(x) + x` to make the unclear type of `x` observable under Elixir's dynamic-union compatibility.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 
