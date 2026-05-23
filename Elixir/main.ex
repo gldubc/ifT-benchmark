@@ -307,22 +307,24 @@ end
 ## Example predicate_1way
 ## success
 defmodule IfTBenchmarkElixir.Predicate1WaySuccess do
-  def g(x) do
-    if IfTBenchmarkElixir.Helpers.positive_integer?(x) do
-      x + 1
-    else
-      0
+  defguard positive_integer?(x) when is_integer(x) and x > 0
+
+  def g(x) when is_binary(x) or is_integer(x) do
+    case x do
+      x when positive_integer?(x) -> x + 1
+      _ -> 0
     end
   end
 end
 
 ## failure
 defmodule IfTBenchmarkElixir.Predicate1WayFailure do
-  def g(x) do
-    if IfTBenchmarkElixir.Helpers.positive_integer?(x) do
-      x + 1
-    else
-      String.length(x)
+  defguard positive_integer?(x) when is_integer(x) and x > 0
+
+  def g(x) when is_binary(x) or is_integer(x) do
+    case x do
+      x when positive_integer?(x) -> x + 1
+      x -> String.length(x) + x
     end
   end
 end

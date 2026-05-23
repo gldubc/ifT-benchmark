@@ -84,6 +84,8 @@ The `merge_with_union` failure uses `String.length(y) + y` after the merge. This
 
 The `predicate_2way` benchmark uses `defguard` and a `case` guard. Calling an ordinary helper function in `if` does not refine the argument, but a custom guard in guard position is expanded to the underlying type test and refines both the matching and fall-through cases.
 
+The `predicate_1way` benchmark also uses `defguard` in guard position. The positive branch refines to integer; the failure branch uses `String.length(x) + x` because the fall-through value is still broad and a bare `String.length(x)` is compatible with the binary alternative of the dynamic union.
+
 
 > Q. How direct (or complex) is the implementation compared to the pseudocode from If-T?
 
